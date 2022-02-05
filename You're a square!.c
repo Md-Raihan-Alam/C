@@ -22,34 +22,12 @@ Examples
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
-#include <stdlib.h>
 
 bool is_square(int number)
 {
-    /* count number of digits */
-    int c = 0; /* digit position */
-    int n = number;
-
-    while (n != 0)
-    {
-        n /= 10;
-        c++;
-    }
-
-    int numberArray[c];
-
-    c = 0;
-    n = number;
-
-    /* extract each digit */
-    while (n != 0)
-    {
-        numberArray[c] = n % 10;
-        n /= 10;
-        c++;
-    }
-    if (numberArray[0])
-        return 0;
+    int i;
+    for(i=0;i<=floor(sqrt(number));i++) if(i*i==number) return 1;
+    return 0;
 }
 int main()
 {
