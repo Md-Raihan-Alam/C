@@ -1,27 +1,40 @@
 //https://codeforces.com/problemset/problem/339/A
 #include<stdio.h>
 #include<string.h>
-#include<ctype.h>
+#include<math.h>
+#include<stdlib.h>
 #include<conio.h>
+int cmpfunc(const void *a,const void *b){
+    return *(int*)a-*(int*)b;
+}
 int main(void)
 {
-    char ch[110];
+    char ch[100];
+    char result[100];
+    int arrLength;
+    int strLength;
     scanf("%s",&ch);
-    int digit=0;
+    strLength=strlen(ch)-1;
+    arrLength=ceil(strlen(ch)/2)+1;
+    int arr[arrLength];
     int i;
-    char *token=strtok(ch,"+");
-    while(token!=NULL){
-        token=strtok(NULL,"+");
-        digit++;
+    int digits=0;
+    for(i=0;i<arrLength;i++){
+        arr[i]=ch[digits]-'0';
+        digits=digits+2;
     }
-    char arr[digit];
+    qsort(arr,arrLength,sizeof(int),cmpfunc);
     i=0;
-    while(token!=NULL){
-        arr[i]=(char)token;
-        token=strtok(NULL,"+");
+    int ar=0;
+    while(i<=strLength){
+        if(i!=0 && i%2!=0) result[i]='+';
+        else {
+            result[i]=arr[ar]+'0';
+            ar++;
+        }
         i++;
     }
-    for(i=0;i<digit;i++) printf("%c",arr[i]);
-    getch();
+    result[i]='\0';
+    puts(result);
     return 0;
 }
