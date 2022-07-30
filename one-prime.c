@@ -8,7 +8,7 @@ int main()
         if(num%i==0) isPrime=0;
     }
     if(num<=0) printf("NO\n");
-    else if(isPrime) printf("YES\n");
+    else if(isPrime==1) printf("YES\n");
     else printf("NO\n");
     return 0;
 }
